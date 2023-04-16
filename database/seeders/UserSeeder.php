@@ -18,27 +18,29 @@ class UserSeeder extends Seeder
     {
         $super = role::where('slug','super-admin')->first();
         User::create([
-            'role_id' => $super->id,
-            'first_name' => 'Super',
-            'last_name' => 'Admin',
-            'email' => 'super@gmail.com',
-            'password' => Hash::make(12345678),
+            'role_id'           => $super->id,
+            'first_name'        => 'Super',
+            'last_name'         => 'Admin',
+            'email'             => 'super@gmail.com',
+            'password'          => Hash::make(12345678),
+            'email_verified_at' => now()
         ]);
         $admin = role::where('slug','admin')->first();
         User::create([
-            'role_id' => $admin->id,
-            'first_name' => 'Admin',
-            'last_name' => 'Name',
-            'email' => 'admin@gmail.com',
-            'password' => Hash::make(12345678),
+            'role_id'           => $admin->id,
+            'first_name'        => 'Admin',
+            'last_name'         => 'Name',
+            'email'             => 'admin@gmail.com',
+            'password'          => Hash::make(12345678),
+            'email_verified_at' => now()
         ]);
         $client = role::where('slug','client')->first();
         User::create([
-            'role_id' => $client->id,
+            'role_id'    => $client->id,
             'first_name' => 'Client',
-            'last_name' => 'Name',
-            'email' => 'client@gmail.com',
-            'password' => Hash::make(12345678),
+            'last_name'  => 'Name',
+            'email'      => 'client@gmail.com',
+            'password'   => Hash::make(12345678),
         ]);
     }
 }

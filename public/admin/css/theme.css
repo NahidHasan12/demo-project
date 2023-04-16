@@ -1538,7 +1538,7 @@ section {
 }
 
 .account-dropdown__item a:hover {
-    background: #4272d7;
+    background: #777c86;
     color: #fff;
 }
 
@@ -1557,19 +1557,19 @@ section {
     border-top: 1px solid #f2f2f2;
 }
 
-.account-dropdown__footer a {
+.account-dropdown__footer .logBtn {
     display: block;
     color: #333;
     padding: 15px 25px;
     font-size: 14px;
 }
 
-.account-dropdown__footer a:hover {
+.account-dropdown__footer .logBtn:hover {
     background: #4272d7;
     color: #fff;
 }
 
-.account-dropdown__footer a i {
+.account-dropdown__footer .logBtn i {
     line-height: 1;
     margin-right: 20px;
     font-size: 18px;
