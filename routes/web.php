@@ -36,7 +36,7 @@ Route::post('/signup/store', [AuthController::class, 'SignUpStore'])->name('sign
 Route::get('/signin', [AuthController::class, 'SignIn']);
 Route::get('/forgot-pass', [AuthController::class, 'forgotPass']);
 //----------------- Auth Dashboard ------------------//
-Route::prefix('app')->name('app.')->middleware('auth','is_verify')->group(function(){
+Route::prefix('app')->name('app.')->middleware('auth','is_verify','permission')->group(function(){
    Route::get('/', [DashboardController::class, 'dashboard'])->name('dashboard');
 });
 

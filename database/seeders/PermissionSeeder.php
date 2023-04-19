@@ -14,22 +14,34 @@ class PermissionSeeder extends Seeder
      */
     public function run(): void
     {
+        $moduleDashboard = Module::updateOrCreate(['name'=>'Dashboard Manage'],['name'=>'Dashboard Manage']);
+
+        permission::create([
+            'module_id' => $moduleDashboard->id,
+            'name'      => 'Dashboard Access',
+            'slug'      => 'app.dashboard'
+        ]);
+
         $moduleRole = Module::updateOrCreate(['name'=>'Role Manage'],['name'=>'Role Manage']);
+
         permission::create([
             'module_id' => $moduleRole->id,
             'name'      => 'Role Access',
             'slug'      => 'app.roles.index'
         ]);
+
         permission::create([
             'module_id' => $moduleRole->id,
             'name'      => 'Role Create',
             'slug'      => 'app.roles.create'
         ]);
+
         permission::create([
             'module_id' => $moduleRole->id,
             'name'      => 'Role Edit',
             'slug'      => 'app.roles.edit'
         ]);
+        
         permission::create([
             'module_id' => $moduleRole->id,
             'name'      => 'Role Delete',

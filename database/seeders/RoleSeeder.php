@@ -15,17 +15,19 @@ class RoleSeeder extends Seeder
      */
     public function run(): void
     {
-        $all_permissioms = permission::all();
+        $all_permissions = permission::all();
 
         
             role::create([
                 'name' => 'Super Admin',
                 'slug' => 'super-admin'
-            ])->permissions()->sync($all_permissioms->pluck('id'));
+            ])->permissions()->sync($all_permissions->pluck('id'));
+
             role::create([
                 'name' => 'Admin',
                 'slug' => 'admin'
-            ])->permissions()->sync($all_permissioms->pluck('id'));;
+            ])->permissions()->sync($all_permissions->pluck('id'));;
+
             role::create([
                 'name'       => 'Client',
                 'slug'       => 'client'

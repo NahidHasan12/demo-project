@@ -8,11 +8,13 @@
     <div class="menu-sidebar__content js-scrollbar1">
         <nav class="navbar-sidebar">
             <ul class="list-unstyled navbar__list">
+                @permission('app.dashboard')
                 <li class="active has-sub">
-                    <a class="js-arrow" href="#">
+                    <a class="js-arrow" href="{{ route('app.dashboard') }}">
                         <i class="fas fa-tachometer-alt"></i>Dashboard
                     </a>
                 </li>
+                @endpermission
                 <li>
                     <a href="table.html">
                         <i class="fas fa-table"></i>Tables</a>

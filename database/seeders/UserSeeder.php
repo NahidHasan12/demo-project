@@ -25,6 +25,7 @@ class UserSeeder extends Seeder
             'password'          => Hash::make(12345678),
             'email_verified_at' => now()
         ]);
+        
         $admin = role::where('slug','admin')->first();
         User::create([
             'role_id'           => $admin->id,
@@ -34,6 +35,7 @@ class UserSeeder extends Seeder
             'password'          => Hash::make(12345678),
             'email_verified_at' => now()
         ]);
+
         $client = role::where('slug','client')->first();
         User::create([
             'role_id'    => $client->id,
