@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Gate;
 class DashboardController extends Controller
 {
     public function dashboard(){
-        Gate::authorize('app.dashboard');
+        //Gate::authorize('app.dashboard');
         return view('admin.pages.dashboard');
     }
 }

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
@@ -27,7 +28,16 @@ class LoginController extends Controller
      * @var string
      */
     protected $redirectTo = RouteServiceProvider::HOME;
-
+     
+    public function redirectTo(){
+        if (Auth::check() && Auth::user()->role->slug != 'client') {
+            return route('app.dashboard');
+        }elseif (Auth::check() && Auth::user()->role->slug == 'client') {
+            return route('portal.dashboard');
+        }else{
+            return route('singin');
+        }
+    }
     /**
      * Create a new controller instance.
      *

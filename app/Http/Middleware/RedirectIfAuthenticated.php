@@ -20,8 +20,12 @@ class RedirectIfAuthenticated
         $guards = empty($guards) ? [null] : $guards;
 
         foreach ($guards as $guard) {
-            if (Auth::guard($guard)->check()) {
+            if (Auth::guard($guard)->check() && Auth::user()->role->slug == "client") {
                 return redirect(RouteServiceProvider::HOME);
+            }elseif (Auth::guard($guard)->check() && Auth::user()->role->slug == "client") {
+                return redirect()->route('portal.dashboard');
+            }else{
+                return $next($request);
             }
         }
 

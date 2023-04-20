@@ -33,12 +33,9 @@ Auth::routes([
 //================== Authintication Route =====================//
 Route::get('/signup', [AuthController::class, 'SignUp']);
 Route::post('/signup/store', [AuthController::class, 'SignUpStore'])->name('signup.store');
-Route::get('/signin', [AuthController::class, 'SignIn']);
+Route::get('/signin', [AuthController::class, 'SignIn'])->name('singin');
 Route::get('/forgot-pass', [AuthController::class, 'forgotPass']);
-//----------------- Auth Dashboard ------------------//
-Route::prefix('app')->name('app.')->middleware('auth','is_verify','permission')->group(function(){
-   Route::get('/', [DashboardController::class, 'dashboard'])->name('dashboard');
-});
+
 
 
 
