@@ -52,6 +52,18 @@
         .breadcrumb-nav li.active a{
             color: rgb(81, 171, 250);
         }
+
+        .table th{
+            font-size:14px;
+        }
+        .table th:first-child,td:first-child{
+            text-align: left;
+            padding-left: 15px;
+        }
+        .table th:last-child,td:last-child{
+            text-align: right;
+            padding-right: 15px;
+        }
     </style>
 
 </head>
@@ -78,17 +90,9 @@
                 <div class="section__content section__content--p30">
                     <div class="container-fluid">
                         {{-- Start Breadcrumb --}}
-                        <div class="ibox bg-light">
-                            <div class="ibox-body mb-3 px-3 py-2 d-flex align-items-center justify-content-between">
-                            <ul class="mb-0 pl-0 breadcrumb-nav">
-                                <li>Dashboard</li>
-                                <li class="active"><a href="#">Dashboard</a></li>
-                            </ul>
-                            <div class="active-btn">
-                                @yield('action')
-                            </div>
-                            </div>
-                        </div>
+                          
+                         @include('admin.inc.breadcrumb')
+
                         {{-- End Breadcrumb --}}
 
                         @yield('content')
@@ -124,11 +128,13 @@
     <script src="{{ asset('admin') }}/vendor/chartjs/Chart.bundle.min.js"></script>
     <script src="{{ asset('admin') }}/vendor/select2/select2.min.js">
     </script>
-
+    <script> 
+       var _token = "{{ csrf_token() }}";
+    </script>
     <!-- Main JS-->
     <script src="{{ asset('admin') }}/js/main.js"></script>
 
-    @yield('scripts')
+    @stack('scripts')
 
 </body>
 

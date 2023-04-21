@@ -1,14 +1,12 @@
 @extends('layouts.app')
 
-@section('title','Dashboard')
+@section('title',$title)
 
 @push('styles')
 
 @endpush
 
-@section('action')
-    <button class="btn btn-sm btn-primary">Save Changes</button>
-@endsection
+
 
 @section('content')
 
