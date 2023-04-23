@@ -9,6 +9,16 @@ if (!function_exists('pageTitle')) {
        return view()->share(['title' => $title]);
     }
 }
+
+/**
+ * Date Format
+ */
+
+if (!function_exists('dateFormat')) {
+    function dateFormat($title,$date){
+       return date($title, strtotime($date));
+    }
+}
     
 
 

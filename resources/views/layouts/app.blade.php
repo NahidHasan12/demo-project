@@ -29,6 +29,9 @@
     <link href="{{ asset('admin') }}/vendor/slick/slick.css" rel="stylesheet" media="all">
     <link href="{{ asset('admin') }}/vendor/select2/select2.min.css" rel="stylesheet" media="all">
     <link href="{{ asset('admin') }}/vendor/perfect-scrollbar/perfect-scrollbar.css" rel="stylesheet" media="all">
+    <!-- Datatables CSS-->
+    <link href="https://cdn.datatables.net/1.11.3/css/dataTables.bootstrap4.min.css" rel="stylesheet">
+    <link href="https://cdn.datatables.net/responsive/2.2.9/css/responsive.bootstrap4.min.css" rel="stylesheet">
 
     <!-- Main CSS-->
     <link href="{{ asset('admin') }}/css/theme.css" rel="stylesheet" media="all">
@@ -54,16 +57,80 @@
         }
 
         .table th{
-            font-size:14px;
+            font-weight: 600 !important;
         }
-        .table th:first-child,td:first-child{
+        .table th:first-child,
+        .table tr td:first-child{
             text-align: left;
             padding-left: 15px;
         }
-        .table th:last-child,td:last-child{
+        .table th:last-child,
+        .table tr td:last-child{
             text-align: right;
             padding-right: 15px;
         }
+        .pr-15{
+            padding-right: 15px;
+        }
+        .dataTables_length,
+        .dataTables_info{
+            padding-left: 15px
+        }
+        /* btn style */
+        .action-btn .btn-style{
+            margin-left: 4px;
+        }
+
+        .btn-style {
+            text-align: center;
+            width: 25px;
+            height: 26px;
+            line-height: 15px;
+            cursor: pointer;
+            border: 0;
+            border-radius: 50%;
+            font-size: 15px;
+            display: inline-block;
+            padding: 6px;
+            transition: .5s ease-in-out;
+        }
+
+        .btn-style-delete{
+            background: rgba(239,72,106,.15);
+            color: #ff5370;
+        }
+        .btn-style-delete:hover {
+            background: #ff5370;
+            color: #fff;
+        }
+
+        .btn-style-edit{
+            background: rgba(55,125,255,.15);
+            color: #377dff;
+        }
+        .btn-style-edit:hover {
+            background: #377dff;
+            color: #fff;
+        }
+
+        .btn-style-view{
+            background: rgba(23, 162, 184, .15);
+            color: #17a2b8;
+        }
+        .btn-style-view:hover {
+            background: #17a2b8;
+            color: #fff;
+        }
+
+        .btn-style-clone{
+            background: rgba(255, 193, 7, .25);
+            color: #ffc107;
+        }
+        .btn-style-clone:hover {
+            background: #ffc107;
+            color: #fff;
+        }
+        
     </style>
 
 </head>
@@ -128,6 +195,19 @@
     <script src="{{ asset('admin') }}/vendor/chartjs/Chart.bundle.min.js"></script>
     <script src="{{ asset('admin') }}/vendor/select2/select2.min.js">
     </script>
+
+    <!-- DataTables-->
+   <script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.11.3/js/dataTables.bootstrap4.min.js"></script>
+    <script src="https://cdn.datatables.net/responsive/2.2.9/js/dataTables.responsive.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.2.3/js/dataTables.buttons.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.2.3/js/buttons.html5.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.2.3/js/buttons.print.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.2.3/js/buttons.colVis.min.js"></script>
+
     <script> 
        var _token = "{{ csrf_token() }}";
     </script>
