@@ -2,6 +2,7 @@
 
 namespace App\Http;
 
+use App\Http\Middleware\AdminSwitch;
 use App\Http\Middleware\ClientMiddleware;
 use App\Http\Middleware\VarifyMiddleware;
 use App\Http\Middleware\PermissionMiddleware;
@@ -66,8 +67,10 @@ class Kernel extends HttpKernel
         'signed' => \App\Http\Middleware\ValidateSignature::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
+
         'permission' => PermissionMiddleware::class,
         'is_verify' => VarifyMiddleware::class,
         'is_client' => ClientMiddleware::class,
+        'admin_switch' => AdminSwitch::class,
     ];
 }

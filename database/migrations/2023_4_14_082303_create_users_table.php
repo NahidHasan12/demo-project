@@ -23,6 +23,7 @@ return new class extends Migration
             $table->string('provider', 15)->nullable();
             $table->string('provider_id')->nullable();
             $table->string('avatar')->nullable();
+            $table->boolean('status')->default(0);
             $table->enum('is_approved',[1,2])->default(2)->comment('1 = active, 2 = pending');
             $table->rememberToken();
             $table->timestamps();

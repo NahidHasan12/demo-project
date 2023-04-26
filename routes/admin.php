@@ -10,7 +10,7 @@ use App\Http\Controllers\Backend\DashboardController;
 
 
 //----------------- Auth Dashboard ------------------//
-Route::prefix('app')->name('app.')->middleware('auth','is_verify','permission')->group(function(){
+Route::prefix('app')->name('app.')->middleware('auth','is_verify','permission','admin_switch')->group(function(){
    Route::get('/', [DashboardController::class, 'dashboard'])->name('dashboard');
 
    //----------Roles------------//

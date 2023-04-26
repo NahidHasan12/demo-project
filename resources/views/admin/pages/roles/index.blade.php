@@ -79,7 +79,7 @@
                 {data: 'operation'},
             ],
             language: {
-                processing: '<img src="{{ asset("/images/tableLoading/table-loading.svg") }}">',
+                processing: '<img src="{{ asset("table-loading.svg") }}">',
                 emptyTable: '<strong class="text-danger">No Data Found</strong>',
                 infoEmpty: '',
                 zeroRecords: '<strong class="text-danger">No Data Found</strong>',
