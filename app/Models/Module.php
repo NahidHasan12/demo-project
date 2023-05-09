@@ -2,8 +2,9 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\permission;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Module extends Model
 {
@@ -18,5 +19,8 @@ class Module extends Model
     protected $fillable = [
        'name'
     ];
+    public function permissions(){
+        return $this->hasMany(permission::class);
+    }
 
 }

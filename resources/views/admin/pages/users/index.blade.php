@@ -8,8 +8,8 @@
 @endpush
 
 @section('action')
-    @can('role-create', Auth::user())
-      <a href="{{ route('app.roles.create') }}" class="btn btn-sm btn-primary">Add Roles</a>
+    @can('user-create', Auth::user())
+    <a href="{{ route('app.users.create') }}" class="btn btn-sm btn-primary">Add Users</a>
     @endcan
 @endsection
 
@@ -21,16 +21,16 @@
       <span class="alert-message mb-3"></span>
        <div class="card"> 
            <div class="card-head"> 
-             <h4 class="card-title p-2 m-1"> {{$title}} </h4>
+             <h4 class="card-title p-2 m-1">{{$title}} </h4>
            </div>
            <div class="card-body px-0">
-              <table class="table table-sm" id="role-datatables"> 
+              <table class="table table-sm" id="user-datatables"> 
                 <thead> 
                    <tr> 
                      <th> SL </th>
-                     <th> Role Name</th>
-                     <th> Note </th>
-                     <th> Permissions </th>
+                     <th> Role</th>
+                     <th> First Name  </th>
+                     <th> Status </th>
                      <th> Created_at </th>
                      <th> Operation </th>
                    </tr>
@@ -49,10 +49,8 @@
 
 @push('scripts')
     
-
-
-    <script>
-        $('#role-datatables').DataTable({
+ <script>
+        table = $('#user-datatables').DataTable({
             processing: true,
             serverSide: true,
             order: [], //Initial no order
@@ -66,18 +64,18 @@
             ],
             pageLength: 25, //number of data show per page
             ajax: {
-                url: "{{ route('app.roles.getData') }}",
+                url: "{{ route('app.users.getData') }}",
                 type: "POST",
                 dataType: "JSON",
                 data: function(d) {
                     d._token = _token
-                },
+                }
             },
             columns: [
                 {data: 'id'},
-                {data: 'name'},
-                {data: 'note'},
-                {data: 'permission'},
+                {data: 'role'},
+                {data: 'first_name'},
+                {data: 'status'},
                 {data: 'created_at'},
                 {data: 'operation'},
             ],
@@ -145,9 +143,11 @@
 
         $(document).on('click','.deleteBtn', function(){
             let row_id = $(this).data('id');
-            let url="{{ route('app.roles.destroy') }}";
+            let url="{{ route('app.users.destroy') }}";
             datetable(row_id,url);
         });
+
     </script>
 
+ 
 @endpush

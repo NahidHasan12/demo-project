@@ -174,27 +174,26 @@
 
 
 
-
+ <!-- CORE PLUGINS-->
+    {{-- <script src="https://code.jquery.com/jquery-3.6.4.min.js" integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script> --}}
+    <!-- Jquery JS-->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <!-- Jquery JS-->
     <script src="{{ asset('admin') }}/vendor/jquery-3.2.1.min.js"></script>
     <!-- Bootstrap JS-->
     <script src="{{ asset('admin') }}/vendor/bootstrap-4.1/popper.min.js"></script>
     <script src="{{ asset('admin') }}/vendor/bootstrap-4.1/bootstrap.min.js"></script>
     <!-- Vendor JS       -->
-    <script src="{{ asset('admin') }}/vendor/slick/slick.min.js">
-    </script>
+    <script src="{{ asset('admin') }}/vendor/slick/slick.min.js"> </script>
     <script src="{{ asset('admin') }}/vendor/wow/wow.min.js"></script>
     <script src="{{ asset('admin') }}/vendor/animsition/animsition.min.js"></script>
-    <script src="{{ asset('admin') }}/vendor/bootstrap-progressbar/bootstrap-progressbar.min.js">
-    </script>
+    <script src="{{ asset('admin') }}/vendor/bootstrap-progressbar/bootstrap-progressbar.min.js"></script>
     <script src="{{ asset('admin') }}/vendor/counter-up/jquery.waypoints.min.js"></script>
-    <script src="{{ asset('admin') }}/vendor/counter-up/jquery.counterup.min.js">
-    </script>
+    <script src="{{ asset('admin') }}/vendor/counter-up/jquery.counterup.min.js"></script>
     <script src="{{ asset('admin') }}/vendor/circle-progress/circle-progress.min.js"></script>
     <script src="{{ asset('admin') }}/vendor/perfect-scrollbar/perfect-scrollbar.js"></script>
     <script src="{{ asset('admin') }}/vendor/chartjs/Chart.bundle.min.js"></script>
-    <script src="{{ asset('admin') }}/vendor/select2/select2.min.js">
-    </script>
+    <script src="{{ asset('admin') }}/vendor/select2/select2.min.js"></script>
 
     <!-- DataTables-->
    <script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
@@ -215,6 +214,42 @@
     <script src="{{ asset('admin') }}/js/main.js"></script>
 
     @stack('scripts')
+
+
+ <script>
+        var table; // role er index er table ata
+
+        function datetable(row_id,url){
+            Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Confirm'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    $.ajax({
+                        url: url,
+                        type: "post",
+                        data:{_token:_token,row_id:row_id},
+                        success: function (response) {
+                            if (response.status =='success') {
+                                table.reload();
+                                $('.alert-message').append('<div class="alert alert-success py-2">'+response.message+'</div>');
+                                
+                            }
+                        }
+                    });
+                }
+            })
+        }
+
+
+    </script>
+
+
 
 </body>
 

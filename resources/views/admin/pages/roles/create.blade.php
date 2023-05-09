@@ -18,7 +18,7 @@
        <div class="card">
             <x-errorMessage/>
             <div class="card-body">
-                <form action="" method="post">
+                <form action="{{ route('app.roles.store') }}" method="post">
                     @csrf
                     <div class="row mb-3">
                         <div class="col-sm-12">
@@ -42,18 +42,19 @@
                     </div>
 
                     <div class="row">
-                        
-                        <div class="col-md-4">
-                            <h5 class="mb-2">Nahid Hasan</h5>
-                            
-                            <div class="form-group">
-                                <label class="ui-checkbox">
-                                    <input type="checkbox" name="permission[]" value="">
-                                    <span class="input-span"></span></label>
+                        @foreach ($modules as $module)
+                              
+                            <div class="col-md-4">
+                                <h5 class="mb-2">{{$module->name}}</h5>
+                                @foreach ($module->permissions as $permission)
+                                    <div class="form-group">
+                                        <label class="ui-checkbox">
+                                        <input type="checkbox" name="permission[]" value="{{$permission->id}}">
+                                        <span class="input-span"></span>{{$permission->name}}</label>
+                                    </div>
+                                @endforeach
                             </div>
-                           
-                        </div>
-
+                        @endforeach 
                     </div>
 
                     <button class="btn btn-primary" type="submit">submit</button>
@@ -66,5 +67,21 @@
 @endsection
 
 @push('scripts')
+    <script>
 
+        $(document).on('click','#check-all-button',function () {
+            if (this.checked) {
+                $(':checkbox').each(function() {
+                    this.checked = true;
+                })
+            } else {
+                $(':checkbox').each(function() {
+                    this.checked = false;
+                })
+            }
+        })
+
+
+
+    </script>
 @endpush
